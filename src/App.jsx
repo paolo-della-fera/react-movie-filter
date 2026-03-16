@@ -14,6 +14,7 @@ const films = [
 function App() {
   const [selectedGenre, setSelectedGenre] = useState('')
   const [filteredFilms, setFilteredFilms] = useState(films)
+  const [searchTitle, setSearchTitle] = useState('')
 
 
   useEffect(() => {
@@ -26,10 +27,26 @@ function App() {
 
   }, [selectedGenre])
 
+
+  useEffect(() => {
+
+    if (searchTitle === '') {
+      setFilteredFilms(films)
+    } else {
+      setFilteredFilms(films.filter(film => film.title.toLowerCase().includes(searchTitle.toLowerCase())
+      ))
+    }
+
+  }, [searchTitle])
+
+
+
   return (
     <>
       <div className="container">
 
+
+        {/* header */}
         <header className="mt-2">
           <h1 className="text-center fw-bolder">
             Films to see
@@ -39,6 +56,15 @@ function App() {
 
         <main className="mt-4">
 
+
+          {/* search movies by title */}
+          <input type="search" className="form-control w-25 mx-auto mb-5" placeholder="Search for a movie..." aria-label="Cerca film"
+            value={searchTitle}
+            onChange={(e) => setSearchTitle(e.target.value)}
+          />
+
+
+          {/* film genre selection */}
           <select className="form-select mb-4" aria-label="Default select example"
             value={selectedGenre}
             onChange={(e) => setSelectedGenre(e.target.value)}>
@@ -52,6 +78,7 @@ function App() {
           </select>
 
 
+          {/* films card */}
           <div className="row">
 
             {
