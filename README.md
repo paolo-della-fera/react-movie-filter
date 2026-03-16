@@ -8,6 +8,8 @@ Create un nuovo progetto React e implementate un sistema di filtro per una lista
 
 L'array dei film è già fornito: 
 
+```jsx
+
  [
    { title: 'Inception', genre: 'Fantascienza' },
    { title: 'Il Padrino', genre: 'Thriller' },
@@ -17,6 +19,7 @@ L'array dei film è già fornito:
    { title: 'Pulp Fiction', genre: 'Thriller' },
  ]
 
+```
 
 Dovrete utilizzare lo stato e useEffect per gestire il filtraggio dinamico.
 
