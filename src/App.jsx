@@ -1,3 +1,5 @@
+import { useState, useEffect } from 'react'
+
 const films = [
   { title: 'Inception', genre: 'Fantascienza' },
   { title: 'Il Padrino', genre: 'Thriller' },
@@ -7,8 +9,22 @@ const films = [
   { title: 'Pulp Fiction', genre: 'Thriller' },
 ]
 
-function App() {
 
+
+function App() {
+  const [selectedGenre, setSelectedGenre] = useState('')
+  const [filteredFilms, setFilteredFilms] = useState(films)
+
+
+  useEffect(() => {
+
+    if (selectedGenre === '') {
+      setFilteredFilms(films)
+    } else {
+      setFilteredFilms(films.filter(film => film.genre === selectedGenre))
+    }
+
+  }, [selectedGenre])
 
   return (
     <>
@@ -23,19 +39,23 @@ function App() {
 
         <main className="mt-4">
 
-          <select className="form-select mb-4" aria-label="Default select example">
-            <option selected>Open this to select the movie genre</option>
-            <option value="1">Fantascienza</option>
-            <option value="2">Thriller</option>
-            <option value="3">Romantico</option>
-            <option value="4">Azione</option>
+          <select className="form-select mb-4" aria-label="Default select example"
+            value={selectedGenre}
+            onChange={(e) => setSelectedGenre(e.target.value)}>
+
+            <option value="">All genres of movies (open this to select the movie genre)</option>
+            <option value="Fantascienza">Fantascienza</option>
+            <option value="Thriller">Thriller</option>
+            <option value="Romantico">Romantico</option>
+            <option value="Azione">Azione</option>
+
           </select>
 
 
           <div className="row">
 
             {
-              films.map((film, i) => (
+              filteredFilms.map((film, i) => (
                 <div className="col-md-4 mb-3" key={i}>
                   <div className="card">
                     <div className="card-body">
