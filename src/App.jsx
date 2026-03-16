@@ -1,10 +1,10 @@
 const films = [
-  { title: 'Inception', genere: 'Fantascienza' },
-  { title: 'Il Padrino', genere: 'Thriller' },
-  { title: 'Titanic', genere: 'Romantico' },
-  { title: 'Batman', genere: 'Azione' },
-  { title: 'Interstellar', genere: 'Fantascienza' },
-  { title: 'Pulp Fiction', genere: 'Thriller' },
+  { title: 'Inception', genre: 'Fantascienza' },
+  { title: 'Il Padrino', genre: 'Thriller' },
+  { title: 'Titanic', genre: 'Romantico' },
+  { title: 'Batman', genre: 'Azione' },
+  { title: 'Interstellar', genre: 'Fantascienza' },
+  { title: 'Pulp Fiction', genre: 'Thriller' },
 ]
 
 function App() {
@@ -23,6 +23,15 @@ function App() {
 
         <main className="mt-4">
 
+          <select className="form-select mb-4" aria-label="Default select example">
+            <option selected>Open this to select the movie genre</option>
+            <option value="1">Fantascienza</option>
+            <option value="2">Thriller</option>
+            <option value="3">Romantico</option>
+            <option value="4">Azione</option>
+          </select>
+
+
           <div className="row">
 
             {
@@ -31,7 +40,7 @@ function App() {
                   <div className="card">
                     <div className="card-body">
                       <h3 className="card-title">{film.title}</h3>
-                      <small>{film.genere}</small>
+                      <small>{film.genre}</small>
                     </div>
                   </div>
                 </div>
@@ -39,7 +48,7 @@ function App() {
             }
 
           </div>
-          
+
         </main>
 
 
